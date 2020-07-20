@@ -1,10 +1,13 @@
 // Global Variables
 let mic;
+let vol;
+let note;
 
 function setup() {
   // Canvas Props
   const cnv = createCanvas(400, 400);
   cnv.position(displayWidth / 2 - width / 2, 50);
+  cnv.style("border", "2px solid rgb(255, 255, 255)");
   
   mic = new p5.AudioIn(failed);
   mic.start(found, failed);
@@ -13,11 +16,8 @@ function setup() {
 function draw() {
   background(51);
   
-  let vol = mic.getLevel();
-  let note = freqToMidi(mic);
-  
-  // Call Functions
-  drawBorders();
+  vol = mic.getLevel();
+  note = freqToMidi(mic);
   
   push();
   noStroke();
@@ -28,16 +28,6 @@ function draw() {
   
   console.log(`Note: ${note}`);
   console.log(`Volume: ${vol}`);
-}
-
-function drawBorders() {
-  push();
-  stroke(255);
-  rect(0, 0, 4, height);
-  rect(width - 4, 0, 4, height);
-  rect(0, 0, width, 4);
-  rect(0, height - 4, width, 4);
-  pop();
 }
 
 function found() {
