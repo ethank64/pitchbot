@@ -26,8 +26,8 @@ function draw() {
   ellipse(0, 0, width, vol * 200);
   pop();
   
-  console.log(`Note: ${note}`);
-  console.log(`Volume: ${vol}`);
+  //console.log(`Note: ${note}`);
+  //console.log(`Volume: ${vol}`);
 }
 
 function found() {
